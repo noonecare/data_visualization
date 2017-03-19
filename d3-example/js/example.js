@@ -45,9 +45,32 @@ function drawDataedGraph() {
         return 5 * i * 10;
     })
         .attr("cy", function (d) {
-            return 2 * 10 * 10;
+            return 2 * 10 * 10 + 0.5;
         })
         .attr("r", function (d) {
             return d * 2 * 10;
         })
 }
+
+
+// 比例尺， 如果每个组件都使用绝对长度 （比如以 px 为单位的长度），那么各个组件之间不容易协调。
+// 不如使用相对长度。比例尺就可以实现这个相对长度。
+
+
+function scaledCircle() {
+    var scale = d3.scaleLinear().domain([0, 2]).range([0, window.innerHeight / 2]);
+     var test_data = [0.1, 0.2, 0.3, 0.4, 0.3, 0.2, 0.1];
+    d3.select("body").selectAll("svg").data([0]).enter().append("svg").attr("width", scale(2)).attr("height", scale(2));
+    // 如果 function 有两个参数 (i, d) 那么 i 表示是第几个 数据， d 表示实际的数据值。如果只有一个参数 (d) 那么 d 表示
+    // 实际的数据值
+    d3.select("svg").selectAll("circle").data(test_data).enter().append("circle").attr("cx", function (i, d) {
+        return scale(i / 7);
+    })
+        .attr("cy", function (d) {
+            return scale(0.5);
+        })
+        .attr("r", function (d) {
+            return scale(0.5);
+        })
+}
+
