@@ -35,3 +35,19 @@ function datamorethanelement(a) {
         d3.select("div + div").selectAll("p").data(test_data).append("p").text("data is used to bind data");
     }
 }
+
+function drawDataedGraph() {
+    var test_data = [1, 2, 3, 4, 3, 2, 1];
+    d3.select("body").selectAll("svg").data([0]).enter().append("svg").attr("width", 400).attr("height", 400);
+    // 如果 function 有两个参数 (i, d) 那么 i 表示是第几个 数据， d 表示实际的数据值。如果只有一个参数 (d) 那么 d 表示
+    // 实际的数据值
+    d3.select("svg").selectAll("circle").data(test_data).enter().append("circle").attr("cx", function (i, d) {
+        return 5 * i * 10;
+    })
+        .attr("cy", function (d) {
+            return 2 * 10 * 10;
+        })
+        .attr("r", function (d) {
+            return d * 2 * 10;
+        })
+}
