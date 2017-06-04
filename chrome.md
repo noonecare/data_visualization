@@ -18,3 +18,7 @@ chrome 开发者工具(F12调用)（有前端开发 IDE 之称）, 主要由以�
 >> - Sources 主要用于 debug  js 代码。有很多 断点，单步执行 的操作。
 
 > - Resources, 貌似保存着所有的 文件。在 Resources 中可以找到 查看网页源代码时看到的网页，不过貌似 Resources 查找不太方便。
+
+> - Applications 中有 Cookies 一项，检查带不带 cookies 访问有什么不同时，可以到这里清除 cookies。
+
+> - Search All Files（Ctrl+Shift+F） 可以查找所有文件。比如我要爬取价格，你可以把你看到的价格输入搜索框中搜索，立马就可以知道这条信息出现在那些 request 对应的文件中。但是，有些资源找不到，相对来说 Fiddler 查找所有文件的功能更靠谱。
