@@ -1,7 +1,7 @@
 # **chrome** 发现hidden information
 
 chrome 开发者工具(F12调用)（有前端开发 IDE 之称）, 主要由以下几大部分：
-### Network, 查看发送了那些 **request**, 收到那些 **response**. 显示所有 **request** 和 **response**.
+- Network, 查看发送了那些 **request**, 收到那些 **response**. 显示所有 **request** 和 **response**.
 - Element, 显示 Dom 数结构。
 > - 审阅元素，查看是加载 js 之后的 DOM 文档。
 > - toggle device toolbar, 可以查看用手机访问网页时的结果，常常用于开发移动端网页。
