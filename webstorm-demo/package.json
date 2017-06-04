@@ -1,0 +1,16 @@
+{
+  "name": "webstorm-demo",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "jasmine": "^2.6.0",
+    "jasmine-core": "^2.6.2",
+    "jasmine-node": "^1.14.5"
+  },
+  "devDependencies": {
+    "karma": "^1.7.0",
+    "karma-chrome-launcher": "^2.1.1",
+    "karma-firefox-launcher": "^1.0.1",
+    "karma-jasmine": "^1.1.0"
+  }
+}
