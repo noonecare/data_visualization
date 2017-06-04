@@ -40,6 +40,19 @@ describe("add validate", function () {
         var a = Object.create(parent);
         a.name = "wangmeng";
         expect(a.age).toBe(28);
+
+        // a.age change does not affect parent.age, parent.age is still 28
+        a.age = 30;
+        expect(parent.age).toBe(28);
+
+        var b = Object.create(parent);
+
+        expect(b.age).toBe(28);
+        // a.prototype.age (parent.age) changes does affect a.age
+        parent.age = 29;
+        expect(b.age).toBe(29);
     });
+
+
 
 })
