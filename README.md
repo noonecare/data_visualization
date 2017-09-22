@@ -32,12 +32,32 @@ JavaScript 有两个标准 CommonJs 和 AMD， AMD 是针对前端引用发布�
 
 ### 测试 & 调试
 
+JavaScript 和 其他语言一样，也有很多测试框架。
 
+[jasmine](https://jasmine.github.io/) 是类似于 scala 中的 org.specs2 似得 BDD 测试工具。
+
+[mocha](https://mochajs.org/)
+
+[karma](https://karma-runner.github.io/1.0/index.html)
+
+JavaScript 的测试框架以及其他的框架（react, VUE） 等等的特别多。
 
 
 ### Live Edit
 
+使用 WebStorm 的话，非常简单就可以做到 Live Edit。在浏览器上按照 JetBrains 的插件，写 html 文件时，debug 这个文件，就可以在浏览器中动态的编辑文件。
+可以在 settings -> Debugger -> Live Edit 对话框中设置刷新页面的时间间隔。WebStorm 做 debug 时，会连接浏览器这样可以动态的观察前端的变化，同时会出现
+Element, Console（和 Chrome 同名窗口显示同样的内容） 等窗口，可以实时的看到当前页面的状态。
+
+
+gulp 中可以定义 watch 任务，监视文件的变化，当文件变化时，可以执行自定义的 callback 函数。这种特性和上面的 Live Debug 结合起来，可以交互式的做很多操作。
+
+
 ### Build Tool
+
+gulp, grunt 是 JavaScript 中最流行的两个 Build Tool。我比较熟悉的是 gulp。
+
+在 gulpfile.js(gulpfile.js 是用 JavaScript 语言写的， gulp 是纯 JavaScript 写的 Build Tool) 定义 task。定义这些 task 之后，就可以用 gulp 执行这些 task， 就像 maven 中定义了 execution 就可以执行一样。
 
 
 ### WebStorm
