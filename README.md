@@ -24,6 +24,9 @@ JavaScript 有两个标准 CommonJs 和 AMD， AMD 是针对前端引用发布�
 [AMD](http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html)
 
 
+在写前端的 javascript 以及 html 时，我觉得用 bower 安装以来比用 npm 方便。因为 bower install <package> 下载下来的是一个 package.js 文件，而 npm 下载下来一堆文件夹，每个文件夹中都有 .js 文件。
+搞得我不知道引用本地的那个文件。
+
 ### how to distribution your product
 
 如何发布应用，如果应用是个要被反复重用的包，那么就要遵守 AMD 和 CommonJS 的标准，使用 define 去定义包。
