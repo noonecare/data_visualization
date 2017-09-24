@@ -4,12 +4,12 @@
 
 ### 管理依赖（安装依赖）
 
-npm, bower 是 JavaScript 的 包管理工具。用 JavaScript 写后台脚本，需要引用某个第三方包了，直接执行 npm install ${pacakge} ， 然后在脚本中执行 var pacakge = require("${package}") 就行。
+npm, bower 是 JavaScript 的 包管理工具。用 JavaScript 写后台脚本，需要引用某个第三方包了，直接执行 npm install ${package} （会下载 pacakge）， 然后在脚本中执行 var package = require("${package}") 就行。
 
 但是问题来到前端，你写的脚本是要客户使用浏览器去执行的（不能指望用户用 node 去执行你写的脚本）， npm, bower 不再能够使用。所以在写前端的 javascript 时， 引用其他包是在 html 文件中写的。这造成了 JavaScript 代码 和 html 文件的耦合，使得 JavaScript
 脚本不一定能在其他 Html 文件中使用。我特别反感这一点，感觉非常别扭。
 
-如果包管理工具是纯 JavaScript 写的，那么只要在 Html 文件中引用了这个包管理工具的包，在这样的 Html 文件中，我们就可以按照 npm,
+如果包管理工具是纯 JavaScript 写的，那么只要在 Html 文件中引用了这个包管理工具，在这样的 Html 文件中，我们就可以按照 npm,
 bower 的引用包的方式去引用包。RequireJs 就是这个思路。只要 Hmtl 中引用了 RequireJs 包，那么就可以按照 npm, bower 的方式（require
 的方式）去引用包，就可以解除 JavaScript 和 html 的耦合。
 
@@ -20,7 +20,7 @@ bower 的引用包的方式去引用包。RequireJs 就是这个思路。只要 
 [AMD](http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html) 是前端引用发布包（Module）的标准。
 
 
-在写前端的 javascript 以及 html 时，我觉得用 bower 安装以来比用 npm 方便。因为 bower install <package> 下载下来的是一个 ${package}.js 文件，而 npm 下载下来的是一堆 XXX.js 文件。
+在写前端的 javascript 以及 html 时，我觉得用 bower 安装比用 npm 方便。因为 bower install <package> 下载下来的是一个 ${package}.js 文件，而 npm 下载下来的是一堆 XXX.js 文件。
 搞得我不知道引用本地的那个文件。
 
 ### 发布包(写 module)
