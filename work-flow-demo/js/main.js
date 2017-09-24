@@ -31,24 +31,27 @@ require(["d3"], function (d3) {
     var w = 500
     var h = 300
 
+    var svg = d3.select('body').append("svg")
+        .attr("width", w)
+        .attr("height", h)
+
+
     function randomDraw() {
-        d3.select("body").selectAll("svg").remove()
 
-        var svg = d3.select('body').append("svg")
-            .attr("width", w)
-            .attr("height", h / 2)
-
-        // todo: 为什么有一个 bar 没有显示出来
         var dataSet = []
         for (var i = 0; i < 5; i++) {
             dataSet.push(Math.random() * 10)
         }
 
-        var padding = 0.5
+        var alpha = 0.9
 
-        var xScale = d3.scaleLinear().domain([0, dataSet.length]).range([0, w])
-        var yScale = d3.scaleLinear().domain([d3.min(dataSet), d3.max(dataSet)]).range([h, 0])
+        var left = (1 - alpha) * w
+        var bottom = alpha * h
 
+        var xScale = d3.scaleLinear().domain([0, dataSet.length]).range([left, w])
+        var yScale = d3.scaleLinear().domain([0, d3.max(dataSet)]).range([0, bottom])
+
+        var band = ( w - left ) / ( dataSet.length * 2 )
 
         svg.selectAll("rect").data(dataSet).enter()
             .append("rect")
@@ -58,18 +61,16 @@ require(["d3"], function (d3) {
             })
             .duration(1000)
             .attr("y", function (d, i) {
-                return yScale(5 - d + padding)
+                return bottom - yScale(d)
             })
             .attr("x", function (d, i) {
                 return xScale(i)
             })
-            .attr("width", xScale(0.5))
+            .attr("width", band)
             .attr("height", function (d) {
-                return yScale(d + padding)
+                return yScale(d)
             })
             .attr("fill", "blue")
-
-        console.log("ok")
 
         var xAxis = d3.axisBottom()
             .scale(xScale)
@@ -81,19 +82,25 @@ require(["d3"], function (d3) {
 
         svg.append("g")
             .attr("class", "axis")
-            .attr("transform", "translate(0," + yScale(0 + 1.5) + ")")
+            .attr("transform", "translate(0," + bottom  + ")")
             .call(xAxis)
 
         svg.append("g")
             .attr("class", "axis")
+            .attr("transform", "translate(" + left + ", 0)")
             .call(yAxis)
+
+        console.log("ok")
     }
 
 
-    d3.select("body").append("p").text("Let's Play")
-        .on("click", randomDraw)
-        .transition()
-        .duration(2000)
+
+    // d3.select("body").append("p").text("Let's Play")
+    //     .on("click", randomDraw)
+    //     .transition()
+    //     .duration(2000)
+
+    randomDraw()
 
 
 
