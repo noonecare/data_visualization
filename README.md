@@ -27,7 +27,7 @@ bower 的引用包的方式去引用包。RequireJs 就是这个思路。只要 
 
 和其他语言一样，发布一般都是要把程序写成一个 module，然后打成一个压缩包。JavaScript 也不例外，也是写成 module 然后发布。
 
-不过至今还没有一种些包的方式，能一统 JavaScript 的天下。现在有两种方式去定义 module： CommonJs 和 AMD。
+不过至今还没有一种写包（定义包）的方式，能一统 JavaScript 的天下。现在有两种方式去定义 module： CommonJs 和 AMD。
 
 不过话说回来，对于我这样一个不常常写 JavaScript 的用户，写出可执行的 JavaScript 脚本就足够了。
 
