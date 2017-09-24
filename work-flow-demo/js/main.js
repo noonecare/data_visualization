@@ -12,38 +12,19 @@ require.config(
 
 require(["d3"], function (d3) {
 
-
-
-    // var svg = d3.select("body").append("svg")
-    //
-    // svg.append("circle")
-    //     .attr("cx", 25)
-    //     .attr("cy", 25)
-    //     .attr("r", 20)
-    //     .attr("fill", "blue")
-    //
-    // svg.append("rect")
-    //     .attr("width", 20)
-    //     .attr("height", 20)
-    //     .attr("color", "red")
-    //
-    //
     var w = 500
     var h = 300
+    var alpha = 0.9
 
     var svg = d3.select('body').append("svg")
         .attr("width", w)
         .attr("height", h)
 
-
-    function randomDraw() {
-
+    function initialDraw() {
         var dataSet = []
         for (var i = 0; i < 5; i++) {
             dataSet.push(Math.random() * 10)
         }
-
-        var alpha = 0.9
 
         var left = (1 - alpha) * w
         var bottom = alpha * h
@@ -55,11 +36,6 @@ require(["d3"], function (d3) {
 
         svg.selectAll("rect").data(dataSet).enter()
             .append("rect")
-            .transition()
-            .delay(function (d, i) {
-                return i * 100
-            })
-            .duration(1000)
             .attr("y", function (d, i) {
                 return bottom - yScale(d)
             })
@@ -89,18 +65,44 @@ require(["d3"], function (d3) {
             .attr("class", "axis")
             .attr("transform", "translate(" + left + ", 0)")
             .call(yAxis)
+    }
 
-        console.log("ok")
+    initialDraw()
+
+    function randomDraw() {
+
+        var dataSet = []
+        for (var i = 0; i < 5; i++) {
+            dataSet.push(Math.random() * 10)
+        }
+
+
+        var bottom = alpha * h
+
+
+        var yScale = d3.scaleLinear().domain([0, d3.max(dataSet)]).range([0, bottom])
+
+        svg.selectAll("rect").data(dataSet)
+            .transition()
+            .delay(function (d, i) {
+                return i * 100
+            })
+            .duration(1000)
+            .attr("y", function (d, i) {
+                return bottom - yScale(d)
+            })
+            .attr("height", function (d) {
+                return yScale(d)
+            })
+            .attr("fill", "blue")
+
     }
 
 
 
-    // d3.select("body").append("p").text("Let's Play")
-    //     .on("click", randomDraw)
-    //     .transition()
-    //     .duration(2000)
+    d3.select("body").append("p").text("Let's Play")
+        .on("click", randomDraw)
 
-    randomDraw()
 
 
 
