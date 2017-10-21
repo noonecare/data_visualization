@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SameOriginPolicyDem</title>
+    <!--在浏览器中，<script>、<img>、<iframe>、<link>等标签都可以加载跨域资源，而不受同源限制，但浏览器限制了JavaScript的权限使其不能读、写加载的内容。-->
+    <!--<script type="text/javascript" src="http://localhost:8000/modifyDocumentProperty.js"></script>-->
+
+</head>
+<body>
+
+<div id="a"></div>
+<!--src can request http://127.0.0.1:8000/modifyDocumentProperty.js-->
+<script type="text/javascript" src="http://127.0.0.1:8000/modifyDocumentProperty.js"></script>
+
+<script type="text/javascript">
+    var request = new XMLHttpRequest();
+    // xmlhttprequest cannot request http://127.0.0.1:8000/sayHello.js
+    // in a script, you cannot request resources that comes from another source(protocol, domain, port)
+    request.open("GET", "http://127.0.0.1:8000/sayHello.js");
+    request.setRequestHeader("Content-Type", "text/javascript", true);
+    request.send(null);
+</script>
+
+</body>
+</html>
